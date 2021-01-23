@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { BrowserRouter as Router, NavLink, Route, Switch } from 'react-router-dom'
-import Cart from './Cart'
+import CartHook from './CartHook'
 import Books from './Books'
 import { useSelector } from 'react-redux'
 
@@ -10,7 +10,7 @@ const Header = () => {
 			return acc + item.count
 		}, 0)
 	)
-	console.log(cartItemsNum)
+
 	return (
 		<div>
 			<Router>
@@ -39,7 +39,7 @@ const Header = () => {
 					<div>
 						<Switch>
 							<Route path="/" exact component={Books} />
-							<Route path="/cart" exact component={Cart} />
+							<Route path="/cart" exact component={CartHook} />
 						</Switch>
 					</div>
 				</div>

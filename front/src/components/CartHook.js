@@ -28,15 +28,16 @@ const CartHook = () => {
 					<Fade left cascade>
 						<ul className="cart-items">
 							{cartItems.map((item) => (
-								<li key={item._id}>
+								<li classNamer="cartitem" key={item._id}>
 									<div>
-										<img src={item.cover_url} alt={item.title} />
+										<img className="cart-product-photo" src={item.cover_url} alt={item.title} />
 									</div>
 									<div>
-										<div>{item.title}</div>
-										<div className="right">
+										<div className="book-title">{item.title}</div>
+										<p className="num-of-pages">Number of pages: {item.pages}</p>
+										<div className="price-value">
 											{formatCurrency(item.price)} x {item.count}{' '}
-											<button className="button" onClick={() => dispatch(removeFromCart(item))}>
+											<button className="cart-btn" onClick={() => dispatch(removeFromCart(item))}>
 												Remove
 											</button>
 										</div>

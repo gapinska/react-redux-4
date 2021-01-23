@@ -25,7 +25,7 @@ export const addToCart = (book) => (dispatch, getState) => {
 }
 
 export const removeFromCart = (book) => (dispatch, getState) => {
-	const cartItems = getState().cart.cartItems.slice().filter((item) => item._id !== book._id)
+	const cartItems = getState().cart.cartItems.slice().filter((item) => item.id !== book.id)
 	dispatch({
 		type: REMOVE_FROM_CART,
 		payload: {

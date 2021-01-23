@@ -19,8 +19,6 @@ const Books = ({ data }) => {
 		[ currentPage ]
 	)
 
-	// dispatch(fetchDataUpdate(num))
-
 	const [ book, setBook ] = useState(null)
 
 	let url = `?page=${currentPage}`
@@ -49,15 +47,13 @@ const Books = ({ data }) => {
 									<a href={'#' + book.id} onClick={() => openModal(book)}>
 										<img className="product-photo" src={book.cover_url} alt={book.title} />
 										<p className="book-title">{book.title}</p>
+										<p className="num-of-pages">Number of pages: {book.pages}</p>
 									</a>
 									<div className="book-price">
 										<div className="price-value">{formatCurrency(book.price)}</div>
 										<button className="cart-btn" onClick={() => dispatch(addToCart(book))}>
 											Add to Cart
 										</button>
-										{/* <button onClick={() => this.props.addToCart(product)} className="button primary">
-									Add To Cart
-								</button> */}
 									</div>
 								</div>
 							</li>
@@ -105,11 +101,4 @@ const mapStateToProps = (state) => {
 		data: state.data
 	}
 }
-
-// const mapDispatchToProps = (dispatch) => {
-// 	return {
-// 		fetchData: () => dispatch(fetchData())
-// 	}
-// }
-
 export default connect(mapStateToProps)(Books)

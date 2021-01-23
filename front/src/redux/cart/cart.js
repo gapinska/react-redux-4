@@ -6,7 +6,7 @@ export const addToCart = (book) => (dispatch, getState) => {
 	let alreadyInCart = false
 	cartItems.forEach((item) => {
 		if (item.id === book.id) {
-			++item.count
+			item.count++
 			alreadyInCart = true
 		}
 	})

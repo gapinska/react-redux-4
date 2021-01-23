@@ -1,6 +1,6 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import './App.css'
+import './App.scss'
 import Books from './components/Books'
 import CartHook from './components/CartHook'
 import Header from './components/Header'

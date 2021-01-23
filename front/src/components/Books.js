@@ -41,18 +41,20 @@ const Books = ({ data }) => {
 	) : (
 		<div>
 			<Fade bottom cascade>
-				<ul className="books">
+				<ul className="shop-content">
 					{data.data.data &&
 						data.data.data.map((book) => (
 							<li key={book.id}>
 								<div className="book">
 									<a href={'#' + book.id} onClick={() => openModal(book)}>
-										<img src={book.cover_url} alt={book.title} />
-										<p>{book.title}</p>
+										<img className="product-photo" src={book.cover_url} alt={book.title} />
+										<p className="book-title">{book.title}</p>
 									</a>
 									<div className="book-price">
-										<div>{formatCurrency(book.price)}</div>
-										<button onClick={() => dispatch(addToCart(book))}>Add to Cart</button>
+										<div className="price-value">{formatCurrency(book.price)}</div>
+										<button className="cart-btn" onClick={() => dispatch(addToCart(book))}>
+											Add to Cart
+										</button>
 										{/* <button onClick={() => this.props.addToCart(product)} className="button primary">
 									Add To Cart
 								</button> */}
@@ -78,7 +80,7 @@ const Books = ({ data }) => {
 								</p>
 								<p>Number of pages: {book.pages}</p>
 								<div className="product-price">
-									<div>Price: {formatCurrency(book.price)}</div>
+									<div className="price-value">Price: {formatCurrency(book.price)}</div>
 									<button
 										className="button primary"
 										onClick={() => {

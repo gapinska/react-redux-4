@@ -1,0 +1,126 @@
+$priceColor: #ff6b00;
+
+* {
+	box-sizing: border-box;
+	font-family: Montserrat, sans-serif;
+}
+.menu,
+.nav,
+.shop-content,
+.book-price,
+.list-item-cart {
+	display: flex;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.menu {
+	justify-content: space-between;
+	background-color: white;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	width: 100vw;
+
+	.logo {
+		padding: 10px 75px;
+	}
+
+	.nav {
+		padding-right: 75px;
+	}
+
+	.cart-img {
+		width: 33px;
+		position: relative;
+		left: 5px;
+	}
+
+	.cart-items-num {
+		position: absolute;
+		top: 26px;
+		color: white;
+		right: 28px;
+		background: #fc7c41;
+		border-radius: 10px;
+		padding: 3px;
+		font-size: 11px;
+	}
+
+	.nav-item {
+		font-family: Montserrat, sans-serif;
+		text-transform: uppercase;
+		font-size: 15px;
+		padding: 4px 21px;
+
+		&:hover,
+		.active {
+			text-decoration: underline;
+		}
+
+		a {
+			text-decoration: none;
+			color: black;
+		}
+	}
+
+	.nav-item-cart {
+		flex-direction: column;
+		padding: 10px 30px;
+	}
+}
+
+.shop-content {
+	margin: 85px 30px;
+	flex-wrap: wrap;
+}
+
+.product-photo {
+	height: 370px;
+}
+
+.book {
+	padding: 10px;
+}
+
+.book-title {
+	width: 250px;
+	line-height: 1.4;
+	letter-spacing: 0.3px;
+	height: 80px;
+}
+
+.price-value {
+	font-weight: bolder;
+	color: $priceColor;
+}
+
+.cart-btn {
+	font-size: 14px;
+	letter-spacing: .5px;
+	line-height: 24px;
+	border: none;
+	color: #fff;
+	background: black;
+	cursor: pointer;
+	font-family: Madefor, Helvetica Neue, Helvetica, Arial;
+	font-weight: 400px;
+	font-weight: bold;
+	padding: 0 18px;
+	border-radius: 10px;
+	margin: -3px 29px;
+	transform: opacity 0.3s;
+	transition: opacity .2s linear;
+	outline: none;
+
+	&:hover {
+		opacity: 0.7;
+	}
+}

@@ -36,7 +36,7 @@ const CartHook = () => {
 										<div className="book-title">{item.title}</div>
 										<p className="num-of-pages">Number of pages: {item.pages}</p>
 										<div className="price-value">
-											{formatCurrency(item.price)} x {item.count}{' '}
+											{formatCurrency(item.price * item.count)} x {item.count}{' '}
 											<button className="cart-btn" onClick={() => dispatch(removeFromCart(item))}>
 												Remove
 											</button>

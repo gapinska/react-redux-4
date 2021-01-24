@@ -5,6 +5,11 @@ $numOfPages: #949a9d;
 	box-sizing: border-box;
 	font-family: Montserrat, sans-serif;
 }
+
+.app {
+	overflow: hidden;
+}
+
 .menu,
 .nav,
 .shop-content,
@@ -32,7 +37,7 @@ a {
 	width: 100vw;
 
 	.logo {
-		padding: 10px 75px;
+		padding: 10px 19px;
 	}
 
 	.nav {
@@ -83,7 +88,7 @@ a {
 }
 
 .shop-content {
-	margin: 85px 30px;
+	margin: 85px auto;
 	flex-wrap: wrap;
 }
 
@@ -99,7 +104,6 @@ a {
 	width: 250px;
 	line-height: 1.4;
 	letter-spacing: 0.3px;
-	height: 58px;
 }
 
 .price-value {
@@ -148,6 +152,7 @@ a {
 			padding: .5rem .75rem;
 			outline: none;
 			transition: background-color .2s linear;
+			margin-bottom: 20px;
 
 			&:hover {
 				color: black;
@@ -164,5 +169,20 @@ a {
 			outline: none;
 			border-color: black;
 		}
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.menu .logo {
+		padding: 10px 75px;
+	}
+
+	.shop-content {
+		margin: 85px 30px;
+		flex-wrap: wrap;
+	}
+
+	.book-title {
+		height: 58px;
 	}
 }

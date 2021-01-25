@@ -3,11 +3,8 @@ import { connect, useSelector, useDispatch } from 'react-redux'
 import { fetchData, fetchDataUpdate } from '../redux/server/data'
 import formatCurrency from '../util'
 import Fade from 'react-reveal/Fade'
-import Modal from 'react-modal'
-import Zoom from 'react-reveal/Zoom'
 import { addToCart } from '../redux/cart/cart'
 import Pagination from './Pagination'
-import { currentPageUpdate } from '../redux/pagination/pagination'
 
 const Books = ({ data }) => {
 	const dispatch = useDispatch()
@@ -62,36 +59,6 @@ const Books = ({ data }) => {
 				</ul>
 			</Fade>
 			{data.data.metadata && <Pagination paginate={paginate} />}
-			{book && (
-				<Modal isOpen={true} onRequestClose={closeModal}>
-					<Zoom>
-						<button className="close-modal" onClick={closeModal}>
-							x
-						</button>
-						<div className="product-details">
-							<img src={book.cover_url} alt={book.title} />
-							<div className="product-details-description">
-								<p>
-									<strong>{book.title}</strong>
-								</p>
-								<p>Number of pages: {book.pages}</p>
-								<div className="product-price">
-									<div className="price-value">Price: {formatCurrency(book.price)}</div>
-									<button
-										className="button primary"
-										onClick={() => {
-											// this.props.addToCart(product)
-											closeModal()
-										}}
-									>
-										Add To Cart
-									</button>
-								</div>
-							</div>
-						</div>
-					</Zoom>
-				</Modal>
-			)}
 		</div>
 	)
 }

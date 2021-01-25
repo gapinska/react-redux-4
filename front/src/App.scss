@@ -1,5 +1,9 @@
 $priceColor: #ff6b00;
 $numOfPages: #949a9d;
+$borderColor: #dee1e6;
+$proceedBtnColor: #fc7c41;
+$totalColor: $numOfPages;
+$contentColor: #f1f3f7;
 
 * {
 	box-sizing: border-box;
@@ -8,6 +12,7 @@ $numOfPages: #949a9d;
 
 .app {
 	overflow: hidden;
+	user-select: none;
 }
 
 .menu,
@@ -15,8 +20,20 @@ $numOfPages: #949a9d;
 .shop-content,
 .book-price,
 .list-item-cart,
-.pagination {
+.pagination,
+.cart-item {
 	display: flex;
+}
+
+.product-photo,
+.book-title,
+.num-of-pages {
+	cursor: auto;
+}
+
+.shop-content,
+.cart-items {
+	margin-top: 90px;
 }
 
 li {
@@ -87,9 +104,44 @@ a {
 	}
 }
 
+.cart-items {
+	padding-left: 0;
+}
+
+.cart-item {
+	padding: 0 0 30px 20px;
+	border-bottom: 1px solid #dee1e6;
+
+	&:not(:first-of-type) {
+		padding-top: 20px;
+	}
+
+	img {
+		max-width: 90px;
+		padding-right: 15px;
+	}
+}
+
+.total {
+	font-size: 13px;
+	line-height: 1.4;
+	color: $totalColor;
+
+	.price-details span {
+		color: $priceColor;
+		font-size: 20px;
+		font-weight: 700;
+		margin-left: 4px;
+	}
+}
+
+.price-details {
+	text-align: center;
+}
+
 .shop-content {
-	margin: 85px auto;
 	flex-wrap: wrap;
+	margin: 85px auto;
 }
 
 .product-photo {
@@ -137,6 +189,19 @@ a {
 	&:hover {
 		opacity: 0.7;
 	}
+
+	&.proceed {
+		border-radius: 3px;
+		background-color: $proceedBtnColor;
+		font-size: 14px;
+		text-transform: uppercase;
+		height: 36px;
+		padding: 9px 6px;
+		font-weight: initial;
+		padding: 3px 40px;
+		width: 90%;
+		margin: 20px;
+	}
 }
 
 .pagination {
@@ -172,17 +237,117 @@ a {
 	}
 }
 
+.ReactModal__Content {
+	margin-top: 50px;
+}
+
+.close-modal-content {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.close-modal {
+	background-color: white;
+	border: none;
+	outline: none;
+	font-weight: 17px;
+	font-size: 22px;
+
+	&:hover {
+		opacity: 0.75;
+	}
+}
+
+.label-form {
+	display: block;
+	margin: 10px 0 5px;
+}
+
+.input-form {
+	padding: 5px;
+}
+
+.form-title {
+	text-transform: uppercase;
+}
+
+.form-cart-btn {
+	margin: 21px auto auto 0;
+	padding: 5px 31px;
+}
+
 @media screen and (min-width: 768px) {
 	.menu .logo {
 		padding: 10px 75px;
 	}
 
 	.shop-content {
-		margin: 85px 30px;
+		margin: 90px 30px;
 		flex-wrap: wrap;
 	}
 
 	.book-title {
 		height: 58px;
+	}
+}
+
+@media screen and (min-width: 1015px) {
+	.content,
+	.total {
+		background-color: $contentColor;
+	}
+
+	.cart-items {
+		top: 125px;
+		padding-top: 17px;
+	}
+
+	.cart-content {
+		width: 750px;
+		margin: 0 auto;
+		position: relative;
+		top: 38px;
+	}
+
+	.cart {
+		background-color: white;
+	}
+
+	.total {
+		padding-bottom: 60px;
+	}
+
+	.cart-item:last-of-type {
+		border-bottom: 2px solid black;
+	}
+
+	.total .price-details {
+		text-align: right;
+		color: black;
+
+		span {
+			margin-left: 16px;
+		}
+	}
+
+	.cart-btn.proceed {
+		width: auto;
+		padding: 3px 53px;
+	}
+
+	.btn-container {
+		display: flex;
+		justify-content: flex-end;
+
+		.cart-btn.proceed {
+			margin: 20px 0;
+		}
+	}
+
+	.empty-cart {
+		margin-top: 150px;
+		text-align: center;
+		font-size: 22px;
+		font-weight: bold;
 	}
 }

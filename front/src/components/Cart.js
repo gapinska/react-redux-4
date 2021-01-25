@@ -1,28 +1,45 @@
 import React, { useState } from 'react'
 import formatCurrency from '../util'
 import Fade from 'react-reveal/Fade'
-import { connect } from 'react-redux'
-import { removeFromCart } from '../redux/cart/cart'
-import { appendErrors, useForm } from 'react-hook-form'
+import { removeFromCart, removeAllItems } from '../redux/cart/cart'
+import { useForm } from 'react-hook-form'
 import { useSelector, useDispatch } from 'react-redux'
 import Modal from 'react-modal'
 import Zoom from 'react-reveal/Zoom'
+import axios from 'axios'
 
 const Cart = () => {
 	const cartItems = useSelector((state) => state.cart.cartItems)
 	const dispatch = useDispatch()
 	const { handleSubmit, register, errors } = useForm()
 	const [ showCheckout, setShowCheckout ] = useState(false)
+	const order = []
+	cartItems.forEach((item) => order.push({ id: item.id, quantity: item.count }))
 
-	const openModal = () => {
-		setShowCheckout(true)
-	}
 	const closeModal = () => {
 		setShowCheckout(null)
 	}
 
-	const onSubmit = (values) => {
-		console.log(values)
+	const onSubmit = (dataDetails) => {
+		const postItems = {
+			order: [ ...order ],
+			first_name: dataDetails.firstName,
+			last_name: dataDetails.lastName,
+			city: dataDetails.city,
+			zip_code: dataDetails.zipCode
+		}
+
+		axios
+			.post('http://localhost:3001/api/order', postItems)
+			.then((response) => {
+				console.log(response)
+			})
+			.catch((error) => {
+				console.log(error)
+			})
+
+		closeModal()
+		dispatch(removeAllItems)
 	}
 
 	return (
@@ -80,7 +97,12 @@ const Cart = () => {
 									</div>
 								</div>
 								{showCheckout && (
-									<Modal isOpen={true} onRequestClose={closeModal}>
+									<Modal
+										isOpen={true}
+										onRequestClose={closeModal}
+										ariaHideApp={false}
+										contentLabel="Selected Option"
+									>
 										<Zoom>
 											<div className="close-modal-content">
 												<button className="close-modal" onClick={closeModal}>
@@ -94,7 +116,6 @@ const Cart = () => {
 													<label className="label-form">First Name</label>
 													<input
 														className="input-form"
-														name="firstName"
 														name="firstName"
 														ref={register({ required: true, minLength: 2 })}
 														placeholder="First Name"
@@ -144,12 +165,9 @@ const Cart = () => {
 													{errors.zipCode &&
 													errors.zipCode.type === 'required' && <p>This is required</p>}
 
-													<input
-														className="cart-btn form-cart-btn"
-														name="submit"
-														type="submit"
-														ref={register}
-													/>
+													<button type="submit" className="cart-btn form-cart-btn">
+														Submit
+													</button>
 												</form>
 											</div>
 										</Zoom>

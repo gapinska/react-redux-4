@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { useSelector } from 'react-redux'
 import { FETCH_DATA_FAILURE, FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS } from './dataTypes'
 
 export const fetchDataRequest = () => {

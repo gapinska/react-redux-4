@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { connect, useSelector, useDispatch } from 'react-redux'
-import { fetchData, fetchDataUpdate } from '../redux/server/data'
+import { connect, useDispatch } from 'react-redux'
+import { fetchData } from '../redux/server/data'
 import formatCurrency from '../util'
 import Fade from 'react-reveal/Fade'
 import { addToCart } from '../redux/cart/cart'
@@ -15,17 +15,6 @@ const Books = ({ data }) => {
 		},
 		[ currentPage ]
 	)
-
-	const [ book, setBook ] = useState(null)
-
-	let url = `?page=${currentPage}`
-
-	const openModal = (book) => {
-		setBook(book)
-	}
-	const closeModal = () => {
-		setBook(null)
-	}
 	const paginate = (page) => {
 		setCurrentPage(page)
 	}
@@ -41,11 +30,9 @@ const Books = ({ data }) => {
 						data.data.data.map((book) => (
 							<li key={book.id}>
 								<div className="book">
-									<a href={'#' + book.id} onClick={() => openModal(book)}>
-										<img className="product-photo" src={book.cover_url} alt={book.title} />
-										<p className="book-title">{book.title}</p>
-										<p className="num-of-pages">Number of pages: {book.pages}</p>
-									</a>
+									<img className="product-photo" src={book.cover_url} alt={book.title} />
+									<p className="book-title">{book.title}</p>
+									<p className="num-of-pages">Number of pages: {book.pages}</p>
 									<div className="book-price">
 										<div className="price-value">{formatCurrency(book.price)}</div>
 										<button className="cart-btn" onClick={() => dispatch(addToCart(book))}>
@@ -55,7 +42,6 @@ const Books = ({ data }) => {
 								</div>
 							</li>
 						))}
-					{/* <div>{data.data.data && console.log(data.data.data)}</div> */}
 				</ul>
 			</Fade>
 			{data.data.metadata && <Pagination paginate={paginate} />}

@@ -1,12 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { currentPageUpdate } from '../redux/pagination/pagination'
-import _, { sortedIndex } from 'lodash'
-import paginationReducer from '../redux/pagination/paginationReducer'
+import { useSelector } from 'react-redux'
+import _ from 'lodash'
 
 const Pagination = ({ paginate }) => {
-	const dispatch = useDispatch()
 	const data = useSelector((state) => state.data.data.metadata)
-	console.log(data)
 	const currentPage = data.page
 	const recordsPerPage = data.records_per_page
 	const totalRecords = data.total_records

@@ -6,4 +6,9 @@ yarn
 yarn start
 ```
 
-front: npm start
+front: 
+```bash
+cd front
+npm i
+npm start
+```

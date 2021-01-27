@@ -282,6 +282,13 @@ form {
 	text-align: center;
 }
 
+.empty-cart {
+	margin-top: 150px;
+	text-align: center;
+	font-size: 22px;
+	font-weight: bold;
+}
+
 @media screen and (min-width: 768px) {
 	.menu .logo {
 		padding: 10px 75px;
@@ -348,12 +355,5 @@ form {
 		.cart-btn.proceed {
 			margin: 20px 0;
 		}
-	}
-
-	.empty-cart {
-		margin-top: 150px;
-		text-align: center;
-		font-size: 22px;
-		font-weight: bold;
 	}
 }
